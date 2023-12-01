@@ -49,4 +49,30 @@ public class Prestamo {
         return "Numero: " + numero + " Estado: " + estado + " Fecha: " + fecha + " Cliente: " + cliente + " Pelicula: " + pelicula;
     }
 
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setCliente(Clientes cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setPelicula(Peliculas pelicula) {
+        this.pelicula = pelicula;
+    }
+
+    public void setPeliculas(ArrayList<Peliculas> peliculas) {
+        this.peliculas = peliculas;
+    }
+    
+    
+
 }
