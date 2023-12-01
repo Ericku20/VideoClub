@@ -69,9 +69,11 @@ public class Prestamo {
         this.pelicula = pelicula;
     }
 
-    public void setPeliculas(ArrayList<Peliculas> peliculas) {
-        this.peliculas = peliculas;
+    public void setPeliculasRentadas(ArrayList<Peliculas> peliculasRentadas) {
+        this.peliculasRentadas = peliculasRentadas;
     }
+
+ 
     
     
 
