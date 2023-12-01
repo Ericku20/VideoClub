@@ -5,6 +5,7 @@
 package Gestores;
 
 import Modelo.Clientes;
+import Modelo.Prestamo;
 import java.util.HashSet;
 
 /**
@@ -13,39 +14,44 @@ import java.util.HashSet;
  */
 public class GestorCliente {
 
-    private HashSet<Clientes> cliente;
+    private HashSet<Clientes> hashsetClientes;
 
     public GestorCliente(HashSet<Clientes> cliente) {
-        this.cliente = new HashSet<>();
+        this.hashsetClientes = new HashSet<>();
     }
 
     public HashSet<Clientes> getClientes() {
-        return cliente;
+        return hashsetClientes;
     }
 
     public void agregarCliente(Clientes c) {
-        cliente.add(c);
+        hashsetClientes.add(c);
     }
 
-    public void eliminarCliente(Clientes c, GestorPrestamo prestamo) {
-        
+    public void eliminarCliente(Clientes cliente, GestorPrestamo gestorPrestamo) {
+        if (!clienteEnUso(cliente, gestorPrestamo)) {
+            hashsetClientes.remove(cliente);
+            System.out.println("Cliente eliminado correctamente");
+        }else{
+            System.out.println("Error: Cliente esta en uso prestamo");
+        }
     }
-    
-    public Clientes buscarCliente(int cedula){
-         for (Clientes c : cliente) {
-            if (c.getCedula()== cedula) {
+
+    public Clientes buscarCliente(int cedula) {
+        for (Clientes c : hashsetClientes) {
+            if (c.getCedula() == cedula) {
                 return c;
             }
         }
         return null;
-    } 
+    }
 
-//    private boolean clienteEnUso(Clientes c, GestorPrestamo prestamo) {
-//        for (Prestamo prestamo : gestorPrestamo.getPrestamos()) {
-//            if (prestamo.getCliente().equals(cliente)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+    public boolean clienteEnUso(Clientes cliente, GestorPrestamo gestorPrestamo) {
+        for (Prestamo p : gestorPrestamo.getPrestamosList()) {
+            if (p.getCliente().equals(cliente)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
