@@ -13,7 +13,7 @@ public class Prestamo {
     private String fecha;
     private Clientes cliente;
     private Peliculas pelicula;
-    private ArrayList<Peliculas> peliculas;
+    private ArrayList<Peliculas> peliculasRentadas;
 
     public Prestamo(int numero, boolean estado, String fecha, Clientes cliente, Peliculas pelicula) {
         this.numero = numero;
@@ -21,7 +21,7 @@ public class Prestamo {
         this.fecha = fecha;
         this.cliente = cliente;
         this.pelicula = pelicula;
-        this.peliculas = new ArrayList();
+        this.peliculasRentadas = new ArrayList();
     }
 
     public int getNumero() {
