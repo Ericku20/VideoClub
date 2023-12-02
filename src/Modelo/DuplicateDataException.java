@@ -10,6 +10,6 @@ package Modelo;
  */
 public class DuplicateDataException extends Exception {
     public DuplicateDataException(String message) {
-        super("No se permite datos duplicados");
+        super();
     }
 }
