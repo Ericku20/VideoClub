@@ -6,14 +6,14 @@ package Modelo;
  */
 public class Clientes {
 
-    private int cedula;
+    private String cedula;
     private String nombre;
     private String fechaNacimiento;
-    private int telefono;
+    private String telefono;
     private String correo;
     private String direccion;
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
@@ -25,7 +25,7 @@ public class Clientes {
         return fechaNacimiento;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
@@ -41,5 +41,7 @@ public class Clientes {
     public String toString() {
         return "Cedula: " + cedula + " Nombre: " + nombre + " Fecha de Nacimiento: " + fechaNacimiento + " Telefono: " + telefono + " Correo: " + correo + " Direccion: " + direccion;
     }
+    
+    
 
 }
