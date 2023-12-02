@@ -11,8 +11,6 @@ package Gestores;
 import Modelo.Categoria;
 import Modelo.CategoryInUseException;
 import Modelo.DuplicateDataException;
-import java.util.HashMap;
-import java.util.Map;
 
 import java.util.HashMap;
 import java.util.Map;
