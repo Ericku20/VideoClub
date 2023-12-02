@@ -98,4 +98,5 @@ public class GestorPelicula {
     public void eliminarPelicula(int codigo) {
         peliculasMap.remove(codigo);
     }
+    // no se si falta algo
 }
