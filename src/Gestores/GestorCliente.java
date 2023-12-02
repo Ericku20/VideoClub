@@ -20,6 +20,10 @@ public class GestorCliente {
         this.hashsetClientes = new HashSet<>();
     }
 
+    public GestorCliente() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public HashSet<Clientes> getClientes() {
         return hashsetClientes;
     }
@@ -37,7 +41,7 @@ public class GestorCliente {
         }
     }
 
-    public Clientes buscarCliente(int cedula) {
+    public Clientes buscarCliente(String cedula) {
         for (Clientes c : hashsetClientes) {
             if (c.getCedula() == cedula) {
                 return c;
