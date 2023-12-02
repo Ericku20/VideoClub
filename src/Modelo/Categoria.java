@@ -18,6 +18,10 @@ public class Categoria {
         return codigo;
     }
 
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -25,10 +29,6 @@ public class Categoria {
     @Override
     public String toString() {
         return "Codigo: " + codigo + " Nombre: " + nombre;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
 
     public void setNombre(String nombre) {
