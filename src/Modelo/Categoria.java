@@ -26,6 +26,14 @@ public class Categoria {
     public String toString() {
         return "Codigo: " + codigo + " Nombre: " + nombre;
     }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     
     
     
