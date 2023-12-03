@@ -43,7 +43,7 @@ public class GestorCliente {
 
     public Clientes buscarCliente(String cedula) {
         for (Clientes c : hashsetClientes) {
-            if (c.getCedula() == cedula) {
+            if (c.getCedula().equals(cedula)) {
                 return c;
             }
         }
