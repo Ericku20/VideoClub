@@ -5,14 +5,24 @@
 package Gestores;
 
 import Modelo.Clientes;
+import Modelo.Lista;
 import Modelo.Prestamo;
 import java.util.HashSet;
+import java.util.Objects;
 
 /**
  *
  * @author uno
  */
-public class GestorCliente {
+public class GestorCliente implements Lista<Clientes> {
+
+    public HashSet<Clientes> getHashsetClientes() {
+        return hashsetClientes;
+    }
+
+    public void setHashsetClientes(HashSet<Clientes> hashsetClientes) {
+        this.hashsetClientes = hashsetClientes;
+    }
 
     private HashSet<Clientes> hashsetClientes;
 
@@ -43,7 +53,7 @@ public class GestorCliente {
 
     public Clientes buscarCliente(String cedula) {
         for (Clientes c : hashsetClientes) {
-            if (c.getCedula().equals(cedula)) {
+            if (c.getCedula().equals(cedula.toString())) {
                 return c;
             }
         }
@@ -57,5 +67,52 @@ public class GestorCliente {
             }
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.hashsetClientes);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final GestorCliente other = (GestorCliente) obj;
+        return Objects.equals(this.hashsetClientes, other.hashsetClientes);
+    }
+
+    @Override
+    public boolean agregar(Clientes obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean modificar(Clientes obj) {
+    return this.agregar(obj);
+    }
+
+    @Override
+    public boolean borrar(Clientes obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Clientes buscar(Object id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Clientes[] toArray() {
+        return this.hashsetClientes.toArray(new Clientes[0]);
     }
 }
