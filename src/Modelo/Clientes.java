@@ -2,7 +2,7 @@ package Modelo;
 
 /**
  *
- * @author uno
+ * @author uno y Sofia
  */
 public class Clientes implements ControldeEntidad {
 
@@ -12,21 +12,6 @@ public class Clientes implements ControldeEntidad {
     private String telefono;
     private String correo;
     private String direccion;
-
-    /**
-     *
-     * @param cedula
-     * @param nombre
-     * @param telefono
-     * @param correo
-     */
-    public Clientes(String cedula, String nombre, String telefono, String correo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Clientes(String toString) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     public String getCedula() {
         return cedula;
@@ -75,8 +60,6 @@ public class Clientes implements ControldeEntidad {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
-    
 
     public Clientes(String cedula, String nombre, String fechaNacimiento, String telefono, String correo, String direccion) {
         this.cedula = cedula;
@@ -87,23 +70,16 @@ public class Clientes implements ControldeEntidad {
         this.direccion = direccion;
     }
 
-   
- /**
-     *
-     * @param cedula
-     * @param nombre
-     * @param correo
-     */
-   
-    public Clientes(String cedula, String nombre, String correo) {
-        this(cedula, nombre,"", correo);
+    public Object[] mostrarEnTabla() {
+        Object[] data = {
+            cedula, nombre, telefono, correo, direccion, fechaNacimiento
+        };
+        return data;
     }
-    
-    
-    
-   @Override
+
+    @Override
     public String toString() {
-        return "Cedula: " + cedula + " Nombre: " + nombre + " Fecha de Nacimiento: " + fechaNacimiento + " Telefono: " + telefono 
+        return "Cedula: " + cedula + " Nombre: " + nombre + " Fecha de Nacimiento: " + fechaNacimiento + " Telefono: " + telefono
                 + " Correo: " + correo + " Direccion: " + direccion;
     }
 
@@ -114,9 +90,7 @@ public class Clientes implements ControldeEntidad {
 
     @Override
     public Object[] toArrayObject() {
-  return new Object[]{this.cedula,this.nombre,this.telefono,this.correo.toString()};
+        return new Object[]{this.cedula, this.nombre, this.telefono, this.correo};
     }
-    
-    
 
 }
