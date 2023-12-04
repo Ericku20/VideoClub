@@ -8,21 +8,18 @@ import Modelo.Clientes;
 import Modelo.Lista;
 import Modelo.Prestamo;
 import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  *
- * @author uno
+ * @author uno y Sofia
  */
-public class GestorCliente implements Lista<Clientes> {
+public class GestorCliente {
 
     private HashSet<Clientes> hashsetClientes;
 
-    public GestorCliente(HashSet<Clientes> cliente) {
-        this.hashsetClientes = new HashSet<>();
-    }
-
     public GestorCliente() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.hashsetClientes = new HashSet<>();
     }
 
     public HashSet<Clientes> getClientes() {
@@ -33,22 +30,33 @@ public class GestorCliente implements Lista<Clientes> {
         hashsetClientes.add(c);
     }
 
-    public void eliminarCliente(Clientes cliente, GestorPrestamo gestorPrestamo) {
-        if (!clienteEnUso(cliente, gestorPrestamo)) {
-            hashsetClientes.remove(cliente);
-            System.out.println("Cliente eliminado correctamente");
-        }else{
-            System.out.println("Error: Cliente esta en uso prestamo");
+    public void eliminarCliente(String cedula) {
+        Iterator<Clientes> iterator = hashsetClientes.iterator();
+
+        while (iterator.hasNext()) {
+            Clientes cliente = iterator.next();
+            if (cliente.getCedula().equals(cedula)) {
+                iterator.remove(); // Removes the current element from the set
+                //Optionally, you can break the loop if you want to remove only the first occurrence
+                break;
+            }
         }
     }
 
-    public Clientes buscarCliente(String cedula) {
-        for (Clientes c : hashsetClientes) {
-            if (c.getCedula().equals(cedula.toString())) {
-                return c;
+    public Object[][] buscarCliente(String cedula) {
+        int size = hashsetClientes.size();
+        Object[][] data = new Object[size][];
+        int index = 0;
+
+        for (Clientes cliente : hashsetClientes) {
+            if (cliente.getCedula().equals(cedula)) {
+                Object[] clientArray = cliente.mostrarEnTabla();
+                data[index++] = clientArray;
             }
+
         }
-        return null;
+
+        return data;
     }
 
     public boolean clienteEnUso(Clientes cliente, GestorPrestamo gestorPrestamo) {
@@ -60,28 +68,17 @@ public class GestorCliente implements Lista<Clientes> {
         return false;
     }
 
-    @Override
-    public boolean agregar(Clientes obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Object[][] mostrarClientesEnPantalla() {
+        int size = hashsetClientes.size();
+        Object[][] data = new Object[size][];
+        int index = 0;
+
+        for (Clientes cliente : hashsetClientes) {
+            Object[] clientArray = cliente.mostrarEnTabla();
+            data[index++] = clientArray;
+        }
+
+        return data;
     }
 
-    @Override
-    public boolean modificar(Clientes obj) {
-    return this.agregar(obj);
-    }
-
-    @Override
-    public boolean borrar(Clientes obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Clientes buscar(Object id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Clientes[] toArray() {
-        return this.hashsetClientes.toArray(new Clientes[0]);
-    }
 }
