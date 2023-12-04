@@ -4,34 +4,38 @@
  */
 package GUI;
 
-import ControladoresVideoClub.Controlador;
-import ControladoresVideoClub.ControladorClientes;
 import Gestores.GestorCliente;
 import Modelo.Clientes;
 import Vista.Tabla;
 import Vista.Vista;
-import java.awt.event.KeyEvent;
-import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
  * @author uno
  */
-public class FrmClientes extends javax.swing.JInternalFrame implements Vista<Clientes>{
+public class FrmClientes extends javax.swing.JInternalFrame implements Vista<Clientes> {
 
-ControladorClientes controlador;
-   
-   
+    GestorCliente controlador;
+
     /**
      * Creates new form FrmClientes
      */
     public FrmClientes() {
-        this.controlador = controlador;
+        this.controlador = new GestorCliente();
+
         initComponents();
-       
-       
+        tabla();
+
+    }
+
+    private void tabla() {
+        tlclientes.setFocusable(true);
 
     }
 
@@ -56,6 +60,8 @@ ControladorClientes controlador;
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAdireccion = new javax.swing.JTextArea();
+        txtFechaNacimiento = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnNew = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
@@ -64,6 +70,7 @@ ControladorClientes controlador;
         txtFiltro = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tlclientes = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -114,6 +121,16 @@ ControladorClientes controlador;
         txtAdireccion.setRows(5);
         jScrollPane1.setViewportView(txtAdireccion);
 
+        txtFechaNacimiento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtFechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaNacimientoActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Fecha de Nacimiento (DD/MM/YYYY)");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -121,7 +138,6 @@ ControladorClientes controlador;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,15 +149,25 @@ ControladorClientes controlador;
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(55, 55, 55)
-                                .addComponent(jLabel4))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel4))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,10 +184,17 @@ ControladorClientes controlador;
                     .addComponent(txtnombre)
                     .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14))
         );
 
@@ -229,23 +262,19 @@ ControladorClientes controlador;
 
         tlclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Cedula", "Nombre", "Telefono", "Correo", "Dirección"
+                "Cedula", "Nombre", "Telefono", "Correo", "Dirección", "Fecha de Nacimiento"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
+        tlclientes.setEnabled(false);
+        tlclientes.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy());
+        tlclientes.setSelectionBackground(new java.awt.Color(204, 204, 255));
+        tlclientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tlclientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tlclientesMouseClicked(evt);
@@ -258,6 +287,9 @@ ControladorClientes controlador;
         });
         jScrollPane2.setViewportView(tlclientes);
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setText("Cedula a manipular");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -266,12 +298,11 @@ ControladorClientes controlador;
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtFiltro)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(388, Short.MAX_VALUE))
+            .addComponent(jScrollPane2)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,11 +310,13 @@ ControladorClientes controlador;
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -294,7 +327,7 @@ ControladorClientes controlador;
     }//GEN-LAST:event_txtcedulaActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-     this.clear();
+        this.clear();
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -303,52 +336,99 @@ ControladorClientes controlador;
         String telefono = this.txttelefono.getText();
         String correo = this.txtcorreo.getText();
         String direccion = this.txtAdireccion.getText();
-   
+        String fechaNacimiento = this.txtFechaNacimiento.getText();
+
         //Agregar miembro al sistema
-        this.controlador.agregar(new Clientes(cedula, nombre, telefono, correo));
-        this.controlador.readAll();
+        this.controlador.agregarCliente(new Clientes(cedula, nombre, fechaNacimiento, telefono, correo, direccion));
+        actualizarTabla();
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void txtFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroActionPerformed
-       Tabla.filter(tlclientes, this.txtFiltro.getText());
-    }//GEN-LAST:event_txtFiltroActionPerformed
+    private void actualizarTabla() {
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Set the model for the JTable
+        tlclientes.setModel(model);
+
+        // Add columns to the model
+        String[] columnNames = {"Cedula", "Nombre", "Telefono", "Correo", "Direccion", "Fecha de Nacimiento"};
+        model.setColumnIdentifiers(columnNames);
+
+        // Add rows to the model using a two-dimensional array
+        Object[][] data = controlador.mostrarClientesEnPantalla();
+
+        for (Object[] row : data) {
+            model.addRow(row);
+        }
+
+        tlclientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tlclientes.setFocusable(true);
+
+    }
+
 
     private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
-       String cedula =JOptionPane.showInputDialog(this, "Ingrese la cedula");
-        if (!cedula.isEmpty()){
-            this.controlador.buscar(cedula);
+        String text = txtFiltro.getText().trim();
+        if (!(text.isEmpty() || text.isBlank())) {
+            DefaultTableModel model = new DefaultTableModel();
+
+            tlclientes.setModel(model);
+
+            String[] columnNames = {"Cedula", "Nombre", "Telefono", "Correo", "Direccion", "Fecha de Nacimiento"};
+            model.setColumnIdentifiers(columnNames);
+
+            Object[][] data = controlador.buscarCliente(text);
+
+            for (Object[] row : data) {
+                model.addRow(row);
+            }
+            tlclientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        } else {
+            actualizarTabla();
         }
+        tlclientes.setFocusable(true);
+
+
     }//GEN-LAST:event_btnsearchActionPerformed
 
+
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-     
-        String cedula = this.txtcedula.getText();
-//Eliminar
-        if (!cedula.isEmpty()) {
-            Clientes ClienteEliminar = new Clientes(cedula);
-            controlador.borrar( ClienteEliminar);
-            this.clear();
-}
+
+        String text = txtFiltro.getText().trim();
+        if (!(text.isEmpty() || text.isBlank())) {
+
+            this.controlador.eliminarCliente(text);
+        }
+        actualizarTabla();
 
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void tlclientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tlclientesMouseClicked
-               if (evt.getClickCount() == 2) { // Verificar si hubo 2 clics (doble clic)
-            int row = this.tlclientes.getSelectedRow();
-            Object cedula = tlclientes.getValueAt(row, 0);
-            this.controlador.buscar(cedula);
-        }
-    }//GEN-LAST:event_tlclientesMouseClicked
+    private void txtFechaNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaNacimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaNacimientoActionPerformed
+
+    private void txtFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroActionPerformed
+        Tabla.filter(tlclientes, this.txtFiltro.getText());
+    }//GEN-LAST:event_txtFiltroActionPerformed
 
     private void tlclientesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlclientesKeyReleased
-          if (evt.getKeyCode()==KeyEvent.VK_DELETE){
-            int row = this.tlclientes.getSelectedRow();
-            if (row>-1){
-                Object cedula = tlclientes.getValueAt(row, 0);
-                           this.controlador.borrar(new Clientes(cedula.toString()));
-            }
-        }
+
+        //          if (evt.getKeyCode()==KeyEvent.VK_DELETE){
+        //            int row = this.tlclientes.getSelectedRow();
+        //            if (row>-1){
+        //                Object cedula = tlclientes.getValueAt(row, 0);
+        //                           this.controlador.borrar(new Clientes(cedula.toString()));
+        //            }
+        //        }
     }//GEN-LAST:event_tlclientesKeyReleased
+
+    private void tlclientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tlclientesMouseClicked
+//        if (evt.getClickCount() == 2) { // Verificar si hubo 2 clics (doble clic)
+//            int row = this.tlclientes.getSelectedRow();
+//            Object cedula = tlclientes.getValueAt(row, 0);
+//            this.controlador.buscar(cedula);
+        //}
+    }//GEN-LAST:event_tlclientesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -361,12 +441,15 @@ ControladorClientes controlador;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tlclientes;
     private javax.swing.JTextArea txtAdireccion;
+    private javax.swing.JTextField txtFechaNacimiento;
     private javax.swing.JTextField txtFiltro;
     private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtcorreo;
@@ -374,64 +457,56 @@ ControladorClientes controlador;
     private javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables
 
-      public void clear() {
+    public void clear() {
         this.txtcedula.setText("");
         this.txtnombre.setText("");
         this.txttelefono.setText("");
         this.txtcorreo.setText("");
         this.txtAdireccion.setText("");
-      
+
     }
-      
-         public void display(Clientes clientes) {
+
+    public void display(Clientes clientes) {
         this.txtcedula.setText(clientes.getCedula());
         this.txtnombre.setText(clientes.getNombre());
         this.txttelefono.setText(clientes.getTelefono());
         this.txtcorreo.setText(clientes.getCorreo());
         this.txtAdireccion.setText(clientes.getCorreo());
-      
+
     }
 
-           public void displayAll(Clientes[] regs) {
-        DefaultTableModel tableModel=(DefaultTableModel) tlclientes.getModel();
+    public void displayAll(Clientes[] regs) {
+        DefaultTableModel tableModel = (DefaultTableModel) tlclientes.getModel();
         tableModel.setNumRows(0);
-        for(Clientes GestorCliente:regs){
-            Object[] ControladorCliente=GestorCliente.toArrayObject();
+        for (Clientes GestorCliente : regs) {
+            Object[] ControladorCliente = GestorCliente.toArrayObject();
             tableModel.addRow(ControladorCliente);
         }
         this.tlclientes.setModel(tableModel);
     }
 
-
     public void displayMessage(String msj) {
-        JOptionPane.showMessageDialog(this, msj,"Informacion Importante", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, msj, "Informacion Importante", JOptionPane.INFORMATION_MESSAGE);
     }
-
-   
 
     public void displayErrorMessage(String msj) {
-        JOptionPane.showMessageDialog(this, msj,"Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, msj, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
-   
     public boolean displayConfirmMessage(String msj) {
-        return JOptionPane.showConfirmDialog(this, msj,"Confirrmacion", JOptionPane.QUESTION_MESSAGE,JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION;
+        return JOptionPane.showConfirmDialog(this, msj, "Confirrmacion", JOptionPane.QUESTION_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
     }
 
-    
     public void displayMessaje(String msj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    
     public boolean displayConfirmMessaje(String msj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-
     public void displayErrorMessaje(String msj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
 
 }
