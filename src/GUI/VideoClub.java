@@ -8,8 +8,6 @@ import Vista.Vista;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-
-
 /**
  *
  * @author uno
@@ -113,12 +111,12 @@ public class VideoClub extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
-     FrmClientes frm = new FrmClientes();
-       Vista.showInternal(jDesktopVideoClub, frm);
+
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
 
     private void jMenuItemPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrestamoActionPerformed
-
+        FrmPrestamos prestamoForm = new FrmPrestamos();
+        prestamoForm.setVisible(true);
     }//GEN-LAST:event_jMenuItemPrestamoActionPerformed
 
     /**
