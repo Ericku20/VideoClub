@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Sofia_2/OneDrive%20-%20Universidad%20Técnica%20Nacional/Documentos/NetBeansProjects/VideoClub/src/Modelo/Prestamo.java</file>
+            <file>file:/C:/Users/erick/OneDrive/Documentos/NetBeansProjects/VideoClub/src/GUI/FrmPrestamos.java</file>
+            <file>file:/C:/Users/erick/OneDrive/Documentos/NetBeansProjects/VideoClub/src/Gestores/GestorCliente.java</file>
+            <file>file:/C:/Users/erick/OneDrive/Documentos/NetBeansProjects/VideoClub/src/Modelo/CategoryInUseException.java</file>
+            <file>file:/C:/Users/erick/OneDrive/Documentos/NetBeansProjects/VideoClub/src/Gestores/GestorCategoria.java</file>
+            <file>file:/C:/Users/erick/OneDrive/Documentos/NetBeansProjects/VideoClub/src/Gestores/GestorPelicula.java</file>
+            <file>file:/C:/Users/erick/OneDrive/Documentos/NetBeansProjects/VideoClub/src/Gestores/GestorPrestamo.java</file>
         </group>
     </open-files>
 </project-private>

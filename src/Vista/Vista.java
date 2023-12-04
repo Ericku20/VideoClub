@@ -5,6 +5,7 @@
 package Vista;
 
 import GUI.FrmClientes;
+import GUI.FrmPrestamos;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,8 +22,7 @@ public interface Vista <Type>{
         frm.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
      
-   
-     
+
       public static void showInternal(JDesktopPane jDesktopVideoClub, FrmClientes frm) {
         int desktopWidth = jDesktopVideoClub.getWidth();
         int desktopHeight = jDesktopVideoClub.getHeight();
@@ -35,15 +35,12 @@ public interface Vista <Type>{
         frm.setVisible(true);
     }
 
-
-    
     public void clear();
     public void display(Type regs);
     public void displayAll(Type[] regs);
     public void displayMessaje(String msj);
     public boolean displayConfirmMessaje(String msj);
     public void displayErrorMessaje(String msj);
-
     public void displayErrorMessage(String el_cliente_no_se_encuentra_registrado);
      
 }

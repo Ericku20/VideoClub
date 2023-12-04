@@ -87,6 +87,11 @@ public class VideoClub extends javax.swing.JFrame {
         jMenuItemPrestamo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItemPrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/stock_open.png"))); // NOI18N
         jMenuItemPrestamo.setText("Prestamos");
+        jMenuItemPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPrestamoActionPerformed(evt);
+            }
+        });
         JmenuADMIN.add(jMenuItemPrestamo);
 
         jMenuBar1.add(JmenuADMIN);
@@ -111,6 +116,10 @@ public class VideoClub extends javax.swing.JFrame {
      FrmClientes frm = new FrmClientes();
        Vista.showInternal(jDesktopVideoClub, frm);
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
+
+    private void jMenuItemPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrestamoActionPerformed
+
+    }//GEN-LAST:event_jMenuItemPrestamoActionPerformed
 
     /**
      * @param args the command line arguments
