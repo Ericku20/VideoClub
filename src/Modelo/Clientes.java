@@ -13,6 +13,21 @@ public class Clientes implements ControldeEntidad {
     private String correo;
     private String direccion;
 
+    /**
+     *
+     * @param cedula
+     * @param nombre
+     * @param telefono
+     * @param correo
+     */
+    public Clientes(String cedula, String nombre, String telefono, String correo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Clientes(String toString) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getCedula() {
         return cedula;
     }
@@ -72,25 +87,21 @@ public class Clientes implements ControldeEntidad {
         this.direccion = direccion;
     }
 
-    public Clientes(String cedula) {
-        this.cedula = cedula;
+   
+ /**
+     *
+     * @param cedula
+     * @param nombre
+     * @param correo
+     */
+   
+    public Clientes(String cedula, String nombre, String correo) {
+        this(cedula, nombre,"", correo);
     }
-
-    public Clientes(String cedula, String nombre, String fechaNacimiento, String correo) {
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.fechaNacimiento = fechaNacimiento;
-        this.correo = correo;
-    }
-
-    public Clientes(String telefono, String direccion) {
-        this.telefono = telefono;
-        this.direccion = direccion;
-    }
-
     
     
-    @Override
+    
+   @Override
     public String toString() {
         return "Cedula: " + cedula + " Nombre: " + nombre + " Fecha de Nacimiento: " + fechaNacimiento + " Telefono: " + telefono 
                 + " Correo: " + correo + " Direccion: " + direccion;
