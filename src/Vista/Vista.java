@@ -5,8 +5,12 @@
 package Vista;
 
 import GUI.FrmClientes;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -16,6 +20,8 @@ public interface Vista <Type>{
      public static void maximize(JFrame frm) {
         frm.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
+     
+   
      
       public static void showInternal(JDesktopPane jDesktopVideoClub, FrmClientes frm) {
         int desktopWidth = jDesktopVideoClub.getWidth();

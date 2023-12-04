@@ -5,6 +5,7 @@
 package Gestores;
 
 import Modelo.Clientes;
+import Modelo.Lista;
 import Modelo.Prestamo;
 import java.util.HashSet;
 
@@ -12,7 +13,7 @@ import java.util.HashSet;
  *
  * @author uno
  */
-public class GestorCliente {
+public class GestorCliente implements Lista<Clientes> {
 
     private HashSet<Clientes> hashsetClientes;
 
@@ -43,7 +44,7 @@ public class GestorCliente {
 
     public Clientes buscarCliente(String cedula) {
         for (Clientes c : hashsetClientes) {
-            if (c.getCedula().equals(cedula)) {
+            if (c.getCedula().equals(cedula.toString())) {
                 return c;
             }
         }
@@ -57,5 +58,30 @@ public class GestorCliente {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean agregar(Clientes obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean modificar(Clientes obj) {
+    return this.agregar(obj);
+    }
+
+    @Override
+    public boolean borrar(Clientes obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Clientes buscar(Object id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Clientes[] toArray() {
+        return this.hashsetClientes.toArray(new Clientes[0]);
     }
 }
